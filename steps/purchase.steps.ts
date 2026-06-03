@@ -25,3 +25,7 @@ Then('I finish the checkout', async () => {
 Then('I should see the text {string}', async (expectedText) => {
   await new Purchase(getPage()).validateCompleteHeader(expectedText);
 });
+
+Then('I should see the checkout error {string}', async (expectedError) => {
+  await new Purchase(getPage()).validateCheckoutError(expectedError);
+});

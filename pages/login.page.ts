@@ -24,6 +24,12 @@ export class Login {
         await this.page.locator(this.loginButton).click()
     }
 
+    public async attemptLogin(userName: string, password: string) {
+        await this.page.locator(this.userNameField).fill(userName)
+        await this.page.locator(this.passwordField).fill(password)
+        await this.page.locator(this.loginButton).click()
+    }
+
     private readonly errorMessage: string = '[data-test="error"]';
 
     public async validateErrorMessage(expectedError: string) {

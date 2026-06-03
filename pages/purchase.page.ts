@@ -10,6 +10,7 @@ export class Purchase {
     private readonly continueButton: string = '[data-test="continue"]'
     private readonly finishButton: string = '[data-test="finish"]'
     private readonly completeHeader: string = '[data-test="complete-header"]'
+    private readonly errorMessage: string = '[data-test="error"]'
 
     constructor(page: Page) {
         this.page = page;
@@ -41,6 +42,13 @@ export class Purchase {
         const actual = await this.page.locator(this.completeHeader).textContent()
         if (actual !== expectedText) {
             throw new Error(`Expected text to be ${expectedText} but found ${actual}`)
+        }
+    }
+
+    public async validateCheckoutError(expectedError: string) {
+        const actual = await this.page.locator(this.errorMessage).textContent()
+        if (actual !== expectedError) {
+            throw new Error(`Expected checkout error to be ${expectedError} but found ${actual}`)
         }
     }
 }

@@ -13,3 +13,7 @@ Then('I sort the products by {string}', async (sortOption) => {
 Then('the products should be sorted by price {string}', async (order) => {
   await new Product(getPage()).validatePriceSort(order);
 });
+
+Then('I should see {int} products on the inventory page', async (count) => {
+  await new Product(getPage()).validateInventoryPage(count);
+});
